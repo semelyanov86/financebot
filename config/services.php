@@ -29,5 +29,17 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'firefly' => [
+        'server' => env('FIREFLY_SERVER'),
+        'client_id' => env('FIREFLY_CLIENT_ID'),
+        'client_secret' => env('FIREFLY_CLIENT_SECRET'),
+        'user' => env('FIREFLY_USER'),
+        'pass' => env('FIREFLY_PASSWORD')
+    ],
+    'telegram' => [
+        'key' => env('TELEGRAM_KEY'),
+        'url' => env('TELEGRAM_URL'),
+        'allowed' => array('')
+    ]
 
 ];

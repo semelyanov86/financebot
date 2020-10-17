@@ -2,6 +2,24 @@
 
 $botman = app('botman');
 
-$botman->hears('foo', function($bot) {
-    $bot->reply('bar');
+$botman->middleware->received(new \App\Http\Middleware\ReceivedMiddleware());
+
+$botman->hears('Расход', function($bot) {
+    $bot->startConversation(new \App\Http\Conversations\ExpenseConversation);
+});
+
+$botman->hears('Баланс', \App\Http\Controllers\BotController::class . '@balance');
+
+$botman->hears('Счета', \App\Http\Controllers\BotController::class . '@accounts');
+
+$botman->hears('Помощь', function($bot) {
+    $bot->reply('Бот поддерживает следующие команды: Расход, Баланс, Счета. Если вы хотите прервать отправку, напишите Стоп');
+})->skipsConversation();
+
+$botman->hears('Стоп', function($bot) {
+    $bot->reply('Отправка расхода остановлена!');
+})->stopsConversation();
+
+$botman->fallback(function ($bot) {
+    $bot->reply('Я вас не понимаю. Напишите Помощь, чтобы получить список доступных мне команд');
 });
