@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 class FireflyService
 {
-    protected string $token;
+    protected $token;
 
     public function __construct()
     {

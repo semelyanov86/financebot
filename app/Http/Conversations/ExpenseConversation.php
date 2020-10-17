@@ -11,15 +11,15 @@ use Illuminate\Support\Carbon;
 
 class ExpenseConversation extends Conversation
 {
-    protected FireflyService $fireflyService;
+    protected $fireflyService;
 
-    public float $amount;
+    public $amount;
 
-    public string $bank;
+    public $bank;
 
-    public string $description;
+    public $description;
 
-    public string $category;
+    public $category;
 
     public function __construct()
     {

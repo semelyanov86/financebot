@@ -13,11 +13,11 @@ class ReceivedMiddleware implements Received
 
     public function received(IncomingMessage $message, $next, BotMan $bot)
     {
-        $user = $bot->getUser();
-        if (in_array($user->getId(), config('services.telegram.allowed'))) {
+        $user = $message->getSender();
+        if (in_array($user, config('services.telegram.allowed'))) {
             return $next($message);
         } else {
-            Log::alert('Denied user from bot with id: ' . $user->getId());
+            Log::alert('Denied user from bot with id: ' . $user);
         }
     }
 }
