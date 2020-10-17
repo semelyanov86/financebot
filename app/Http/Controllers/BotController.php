@@ -13,10 +13,20 @@ class BotController extends Controller
         $service = new FireflyService();
         $balance = $service->getBalance();
         $bot->reply('Состояние счёта на текущий месяц');
-        $bot->reply('Баланс в рублях: ' . $balance->get('balance-in-RUB')->get('value_parsed'));
-        $bot->reply('Расходы в этом месяце: ' . $balance->get('spent-in-RUB')->get('value_parsed'));
-        $bot->reply('Заработано в этом месяце: ' . $balance->get('earned-in-RUB')->get('value_parsed'));
-        $bot->reply('Чистая прибыль (₽): ' . $balance->get('net-worth-in-RUB')->get('value_parsed'));
+        if ($balance) {
+            if ($balance->get('balance-in-RUB')) {
+                $bot->reply('Баланс в рублях: ' . $balance->get('balance-in-RUB')->get('value_parsed'));
+            }
+            if ($balance->get('spent-in-RUB')) {
+                $bot->reply('Расходы в этом месяце: ' . $balance->get('spent-in-RUB')->get('value_parsed'));
+            }
+            if ($balance->get('earned-in-RUB')) {
+                $bot->reply('Заработано в этом месяце: ' . $balance->get('earned-in-RUB')->get('value_parsed'));
+            }
+            if ($balance->get('net-worth-in-RUB')) {
+                $bot->reply('Чистая прибыль (₽): ' . $balance->get('net-worth-in-RUB')->get('value_parsed'));
+            }
+        }
     }
 
     public function accounts(BotMan $botMan)
