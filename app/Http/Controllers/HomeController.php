@@ -10,8 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $service = new FireflyService();
-        dd($service->getAvailableAccounts());
+/*        $service = new FireflyService();
+        dd($service->getAvailableAccounts());*/
         /*$result = $service->sendTransaction(array(
             'transactions' => array([
                 'type' => 'withdrawal',

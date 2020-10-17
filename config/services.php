@@ -37,9 +37,9 @@ return [
         'pass' => env('FIREFLY_PASSWORD')
     ],
     'telegram' => [
-        'key' => env('TELEGRAM_KEY'),
+        'key' => env('TELEGRAM_TOKEN'),
         'url' => env('TELEGRAM_URL'),
-        'allowed' => array('')
+        'allowed' => array('303437427', '1146462100')
     ]
 
 ];

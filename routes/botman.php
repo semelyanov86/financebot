@@ -4,6 +4,10 @@ $botman = app('botman');
 
 $botman->middleware->received(new \App\Http\Middleware\ReceivedMiddleware());
 
+$botman->hears('/start', function($bot) {
+    $bot->reply('Добро пожаловать в бот по управлению финансами. Чтобы отправить расход, напишите Расход. Для получения месячного баланса, пишите Баланс. Для остатков по счетам - Счета.');
+});
+
 $botman->hears('Расход', function($bot) {
     $bot->startConversation(new \App\Http\Conversations\ExpenseConversation);
 });
