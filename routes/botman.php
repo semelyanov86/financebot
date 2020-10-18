@@ -25,7 +25,7 @@ $botman->hears('Баланс', \App\Http\Controllers\BotController::class . '@ba
 $botman->hears('Счета', \App\Http\Controllers\BotController::class . '@accounts');
 
 $botman->hears('Помощь', function($bot) {
-    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Транзакции, Категории, Бюджеты. Для удаления пишите Удалить транзакцию 7. Если вы хотите прервать отправку, напишите Стоп');
+    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Транзакции, Категории, Бюджеты. Для удаления пишите Удалить транзакцию 7. Для получения статистики по категориям за прошлые месяцы пишите Категории месяц назад 2 (где 2 - количество месяцев назад). Аналогично в случае с бюджетами. Если вы хотите прервать отправку, напишите Стоп');
 })->skipsConversation();
 
 $botman->hears('Удалить транзакцию {id}', function($bot, $id) {
@@ -41,7 +41,10 @@ $botman->hears('Удалить транзакцию {id}', function($bot, $id) {
 
 $botman->hears('Категории', \App\Http\Controllers\BotController::class . '@categories');
 
+$botman->hears('Категории месяц назад {num}', \App\Http\Controllers\BotController::class . '@categories');
+
 $botman->hears('Бюджеты', \App\Http\Controllers\BotController::class . '@budgets');
+$botman->hears('Бюджеты месяц назад {num}', \App\Http\Controllers\BotController::class . '@budgets');
 
 $botman->hears('Стоп', function($bot) {
     $bot->reply('Отправка расхода остановлена!');

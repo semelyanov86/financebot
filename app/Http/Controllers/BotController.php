@@ -59,11 +59,19 @@ class BotController extends Controller
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
 
-    public function categories(BotMan $botMan)
+    public function categories(BotMan $botMan, $num = false)
     {
         $service = new FireflyService();
-        $categories = $service->getCategoriesStat();
-        $msg = '<b>Статистика по категориям за текущий месяц</b>';
+        if ($num) {
+            $num = intval($num);
+            $start = \Illuminate\Support\Carbon::now()->subMonths($num)->firstOfMonth()->format('Y-m-d H:i:s');
+            $end = \Illuminate\Support\Carbon::now()->subMonths($num)->endOfMonth()->format('Y-m-d H:i:s');
+            $categories = $service->getCategoriesStat($start, $end);
+            $msg = '<b>Статистика по категориям за период ' . $start . ' - ' . $end . '</b>';
+        } else {
+            $categories = $service->getCategoriesStat();
+            $msg = '<b>Статистика по категориям за текущий месяц</b>';
+        }
         $categories->each(function ($category) use ($botMan, &$msg) {
             if (isset($category->get('spent')[0])) {
                 $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($category->get('spent')[0]['spent'])) . $category->get('spent')[0]['currency_symbol'];
@@ -72,11 +80,19 @@ class BotController extends Controller
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
 
-    public function budgets(BotMan $botMan)
+    public function budgets(BotMan $botMan, $num = false)
     {
         $service = new FireflyService();
-        $categories = $service->getBudgetsStat();
-        $msg = '<b>Статистика по бюджетам за текущий месяц</b>';
+        if ($num) {
+            $num = intval($num);
+            $start = \Illuminate\Support\Carbon::now()->subMonths($num)->firstOfMonth()->format('Y-m-d H:i:s');
+            $end = \Illuminate\Support\Carbon::now()->subMonths($num)->endOfMonth()->format('Y-m-d H:i:s');
+            $categories = $service->getBudgetsStat($start, $end);
+            $msg = '<b>Статистика по бюджетам за период ' . $start . ' - ' . $end . '</b>';
+        } else {
+            $categories = $service->getBudgetsStat();
+            $msg = '<b>Статистика по бюджетам за текущий месяц</b>';
+        }
         $categories->each(function ($category) use ($botMan, &$msg) {
             if (isset($category->get('spent')[0])) {
                 $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($category->get('spent')[0]['amount'])) . $category->get('spent')[0]['currency_symbol'];
