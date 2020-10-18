@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
 /*        $service = new FireflyService();
-        dd($service->getAvailableAccounts());*/
+        dd($service->getTransactions());*/
         /*$result = $service->sendTransaction(array(
             'transactions' => array([
                 'type' => 'withdrawal',

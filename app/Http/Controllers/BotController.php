@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FireflyService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use BotMan\BotMan\BotMan;
 
@@ -37,6 +38,16 @@ class BotController extends Controller
         $accounts->each(function ($account) use ($botMan) {
             $attrs = $account->get('attributes');
             $botMan->reply($attrs['name'] . ' - ' . $attrs['current_balance'] . $attrs['currency_symbol']);
+        });
+    }
+
+    public function transactions(BotMan $botMan)
+    {
+        $service = new FireflyService();
+        $transactions = $service->getTransactions();
+        $botMan->reply('Операции за последний день: ');
+        $transactions->each(function ($transaction) use ($botMan) {
+            $botMan->reply($transaction['description'] . ': ' . number_format(floatval($transaction['amount'])) . $transaction['currency_symbol'] . '. Дата ' . Carbon::parse($transaction['date'])->toDateTimeString());
         });
     }
 }

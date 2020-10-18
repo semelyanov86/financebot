@@ -128,4 +128,28 @@ class FireflyService
             return collect(array());
         }
     }
+
+    public function getTransactions() : Collection
+    {
+        if ($this->token) {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json'
+            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/transactions', [
+                'start' => Carbon::yesterday()->format('Y-m-d'),
+                'end' => Carbon::tomorrow()->format('Y-m-d'),
+            ]);
+            if ($response->ok()) {
+                $res = $response->json();
+                return collect($res['data'])->map(function($row) {
+                    return collect($row);
+                })->pluck('attributes.transactions')->map(function($row) {
+                    return collect($row);
+                })->pluck(0);
+            } else {
+                return collect(array());
+            }
+        } else {
+            return collect(array());
+        }
+    }
 }
