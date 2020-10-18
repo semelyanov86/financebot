@@ -58,4 +58,30 @@ class BotController extends Controller
         });
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
+
+    public function categories(BotMan $botMan)
+    {
+        $service = new FireflyService();
+        $categories = $service->getCategoriesStat();
+        $msg = '<b>Статистика по категориям за текущий месяц</b>';
+        $categories->each(function ($category) use ($botMan, &$msg) {
+            if (isset($category->get('spent')[0])) {
+                $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($category->get('spent')[0]['spent'])) . $category->get('spent')[0]['currency_symbol'];
+            }
+        });
+        $botMan->reply($msg, ['parse_mode' => 'HTML']);
+    }
+
+    public function budgets(BotMan $botMan)
+    {
+        $service = new FireflyService();
+        $categories = $service->getBudgetsStat();
+        $msg = '<b>Статистика по бюджетам за текущий месяц</b>';
+        $categories->each(function ($category) use ($botMan, &$msg) {
+            if (isset($category->get('spent')[0])) {
+                $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($category->get('spent')[0]['amount'])) . $category->get('spent')[0]['currency_symbol'];
+            }
+        });
+        $botMan->reply($msg, ['parse_mode' => 'HTML']);
+    }
 }

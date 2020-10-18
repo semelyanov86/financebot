@@ -152,4 +152,52 @@ class FireflyService
             return collect(array());
         }
     }
+
+    public function getCategoriesStat() : Collection
+    {
+        if ($this->token) {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json'
+            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/categories', [
+                'start' => Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s'),
+                'end' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            if ($response->ok()) {
+                $res = $response->json();
+                return collect($res['data'])->map(function($row) {
+                    return collect($row);
+                })->pluck('attributes')->map(function($row) {
+                    return collect($row);
+                });
+            } else {
+                return collect(array());
+            }
+        } else {
+            return collect(array());
+        }
+    }
+
+    public function getBudgetsStat() : Collection
+    {
+        if ($this->token) {
+            $response = Http::withHeaders([
+                'Accept' => 'application/json'
+            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/budgets', [
+                'start' => Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s'),
+                'end' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            if ($response->ok()) {
+                $res = $response->json();
+                return collect($res['data'])->map(function($row) {
+                    return collect($row);
+                })->pluck('attributes')->map(function($row) {
+                    return collect($row);
+                });
+            } else {
+                return collect(array());
+            }
+        } else {
+            return collect(array());
+        }
+    }
 }

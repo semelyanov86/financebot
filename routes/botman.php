@@ -16,15 +16,19 @@ $botman->hears('Перевод', function($bot) {
     $bot->startConversation(new \App\Http\Conversations\TransferConversation);
 });
 
-$botman->hears('Трансакции', \App\Http\Controllers\BotController::class . '@transactions');
+$botman->hears('Транзакции', \App\Http\Controllers\BotController::class . '@transactions');
 
 $botman->hears('Баланс', \App\Http\Controllers\BotController::class . '@balance');
 
 $botman->hears('Счета', \App\Http\Controllers\BotController::class . '@accounts');
 
 $botman->hears('Помощь', function($bot) {
-    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Трансакции. Если вы хотите прервать отправку, напишите Стоп');
+    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Транзакции, Категории, Бюджеты. Если вы хотите прервать отправку, напишите Стоп');
 })->skipsConversation();
+
+$botman->hears('Категории', \App\Http\Controllers\BotController::class . '@categories');
+
+$botman->hears('Бюджеты', \App\Http\Controllers\BotController::class . '@budgets');
 
 $botman->hears('Стоп', function($bot) {
     $bot->reply('Отправка расхода остановлена!');

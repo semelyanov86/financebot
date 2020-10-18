@@ -91,7 +91,7 @@ class TransferConversation extends Conversation
                         'destination_id' => $this->bank2
                     ])
                 ));
-                $this->say('Принято! Номер трансакции ' . $result);
+                $this->say('Принято! Номер транзакции ' . $result);
             } else {
                 $this->repeat();
             }

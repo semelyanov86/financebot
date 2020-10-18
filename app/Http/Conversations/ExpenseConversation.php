@@ -112,7 +112,7 @@ class ExpenseConversation extends Conversation
                         'budget_id' => $this->budget
                     ])
                 ));
-                $this->say('Принято! Номер трансакции ' . $result);
+                $this->say('Принято! Номер транзакции ' . $result);
             } else {
                 $this->repeat();
             }
