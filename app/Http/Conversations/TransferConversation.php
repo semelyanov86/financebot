@@ -84,7 +84,7 @@ class TransferConversation extends Conversation
                 $result = $this->fireflyService->sendTransaction(array(
                     'transactions' => array([
                         'type' => 'transfer',
-                        'date' => Carbon::now(),
+                        'date' => Carbon::now()->format('Y-m-d H:i:s'),
                         'amount' => $this->amount,
                         'description' => $this->description,
                         'source_id' => $this->bank1,

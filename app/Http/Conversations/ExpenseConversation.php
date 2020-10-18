@@ -103,7 +103,7 @@ class ExpenseConversation extends Conversation
                 $result = $this->fireflyService->sendTransaction(array(
                     'transactions' => array([
                         'type' => 'withdrawal',
-                        'date' => Carbon::now(),
+                        'date' => Carbon::now()->format('Y-m-d H:i:s'),
                         'amount' => $this->amount,
                         'description' => $this->description,
                         'category_id' => $this->category,

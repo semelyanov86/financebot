@@ -9,6 +9,8 @@ use BotMan\BotMan\BotMan;
 
 class BotController extends Controller
 {
+    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4);
+
     public function balance(BotMan $bot)
     {
         $service = new FireflyService();
@@ -35,9 +37,12 @@ class BotController extends Controller
         $service = new FireflyService();
         $accounts = $service->getAvailableAccounts();
         $botMan->reply('Доступные остатки по счетам:');
-        $accounts->each(function ($account) use ($botMan) {
-            $attrs = $account->get('attributes');
-            $botMan->reply($attrs['name'] . ' - ' . $attrs['current_balance'] . $attrs['currency_symbol']);
+        $blacklist = self::BLACKLIST_ACCOUNTS;
+        $accounts->each(function ($account) use ($botMan, $blacklist) {
+            if (!in_array($account->get('id'), $blacklist)) {
+                $attrs = $account->get('attributes');
+                $botMan->reply($attrs['name'] . ' - ' . $attrs['current_balance'] . $attrs['currency_symbol']);
+            }
         });
     }
 
