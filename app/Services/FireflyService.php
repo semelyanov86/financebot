@@ -7,6 +7,7 @@ namespace App\Services;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FireflyService
 {
@@ -40,6 +41,16 @@ class FireflyService
             }
         } else {
             return array();
+        }
+    }
+
+    public function deleteTransaction(int $id)
+    {
+        if ($this->token) {
+            $response = Http::withToken($this->token)->delete(config('services.firefly.server') . '/api/v1/transactions/' . $id);
+            return true;
+        } else {
+            return false;
         }
     }
 

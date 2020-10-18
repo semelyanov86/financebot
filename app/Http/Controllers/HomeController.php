@@ -11,7 +11,8 @@ class HomeController extends Controller
     public function index()
     {
         /*$service = new FireflyService();
-        $categories = $service->getBudgetsStat();
+        $service->deleteTransaction(30);*/
+        /*$categories = $service->getBudgetsStat();
         $categories->each(function ($category) {
             if (isset($category->get('spent')[0])) {
                 dd($category);

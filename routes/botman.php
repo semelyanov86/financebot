@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\FireflyService;
+
 $botman = app('botman');
 
 $botman->middleware->received(new \App\Http\Middleware\ReceivedMiddleware());
@@ -23,8 +25,19 @@ $botman->hears('Баланс', \App\Http\Controllers\BotController::class . '@ba
 $botman->hears('Счета', \App\Http\Controllers\BotController::class . '@accounts');
 
 $botman->hears('Помощь', function($bot) {
-    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Транзакции, Категории, Бюджеты. Если вы хотите прервать отправку, напишите Стоп');
+    $bot->reply('Бот поддерживает следующие команды: Расход, Перевод, Баланс, Счета, Транзакции, Категории, Бюджеты. Для удаления пишите Удалить транзакцию 7. Если вы хотите прервать отправку, напишите Стоп');
 })->skipsConversation();
+
+$botman->hears('Удалить транзакцию {id}', function($bot, $id) {
+    $id = intval($id);
+    $service = new FireflyService();
+    $result = $service->deleteTransaction($id);
+    if ($result) {
+        $bot->reply('Транзакция с номером ' . $id . ' успешно удалена');
+    } else {
+        $bot->reply('Ошибка удаления транзакции!');
+    }
+});
 
 $botman->hears('Категории', \App\Http\Controllers\BotController::class . '@categories');
 
