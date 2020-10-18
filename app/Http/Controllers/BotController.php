@@ -15,44 +15,47 @@ class BotController extends Controller
     {
         $service = new FireflyService();
         $balance = $service->getBalance();
-        $bot->reply('Состояние счёта на текущий месяц');
+        $msg = '<b>Состояние счёта на текущий месяц</b>';
         if ($balance) {
             if ($balance->get('balance-in-RUB')) {
-                $bot->reply('Баланс в рублях: ' . $balance->get('balance-in-RUB')->get('value_parsed'));
+                $msg .= PHP_EOL . 'Баланс в рублях: ' . $balance->get('balance-in-RUB')->get('value_parsed');
             }
             if ($balance->get('spent-in-RUB')) {
-                $bot->reply('Расходы в этом месяце: ' . $balance->get('spent-in-RUB')->get('value_parsed'));
+                $msg .= PHP_EOL . 'Расходы в этом месяце: ' . $balance->get('spent-in-RUB')->get('value_parsed');
             }
             if ($balance->get('earned-in-RUB')) {
-                $bot->reply('Заработано в этом месяце: ' . $balance->get('earned-in-RUB')->get('value_parsed'));
+                $msg .= PHP_EOL . 'Заработано в этом месяце: ' . $balance->get('earned-in-RUB')->get('value_parsed');
             }
             if ($balance->get('net-worth-in-RUB')) {
-                $bot->reply('Чистая прибыль (₽): ' . $balance->get('net-worth-in-RUB')->get('value_parsed'));
+                $msg .= PHP_EOL . 'Чистая прибыль (₽): ' . $balance->get('net-worth-in-RUB')->get('value_parsed');
             }
         }
+        $bot->reply($msg, ['parse_mode' => 'HTML']);
     }
 
     public function accounts(BotMan $botMan)
     {
         $service = new FireflyService();
         $accounts = $service->getAvailableAccounts();
-        $botMan->reply('Доступные остатки по счетам:');
+        $msg = '<b>Доступные остатки по счетам:</b>';
         $blacklist = self::BLACKLIST_ACCOUNTS;
-        $accounts->each(function ($account) use ($botMan, $blacklist) {
+        $accounts->each(function ($account) use ($botMan, $blacklist, &$msg) {
             if (!in_array($account->get('id'), $blacklist)) {
                 $attrs = $account->get('attributes');
-                $botMan->reply($attrs['name'] . ' - ' . $attrs['current_balance'] . $attrs['currency_symbol']);
+                $msg .= PHP_EOL . $attrs['name'] . ' - ' . $attrs['current_balance'] . $attrs['currency_symbol'];
             }
         });
+        $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
 
     public function transactions(BotMan $botMan)
     {
         $service = new FireflyService();
         $transactions = $service->getTransactions();
-        $botMan->reply('Операции за последний день: ');
-        $transactions->each(function ($transaction) use ($botMan) {
-            $botMan->reply($transaction['description'] . ': ' . number_format(floatval($transaction['amount'])) . $transaction['currency_symbol'] . '. Дата ' . Carbon::parse($transaction['date'])->toDateTimeString());
+        $msg = '<b>Операции за последний день:</b>';
+        $transactions->each(function ($transaction) use ($botMan, &$msg) {
+            $msg .= PHP_EOL . $transaction['description'] . ': ' . number_format(floatval($transaction['amount'])) . $transaction['currency_symbol'] . '. Дата ' . Carbon::parse($transaction['date'])->toDateTimeString();
         });
+        $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
 }
