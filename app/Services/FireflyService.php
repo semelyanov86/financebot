@@ -43,6 +43,21 @@ class FireflyService
         }
     }
 
+    public function getBudgets() : array
+    {
+        if ($this->token) {
+            $response = Http::withToken($this->token)->get(config('services.firefly.server') . '/api/v1/budgets');
+            if ($response->ok()) {
+                $res = $response->json();
+                return $res['data'];
+            } else {
+                return array();
+            }
+        } else {
+            return array();
+        }
+    }
+
     public function getAccounts() : array
     {
         if ($this->token) {

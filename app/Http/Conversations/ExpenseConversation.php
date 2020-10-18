@@ -21,6 +21,8 @@ class ExpenseConversation extends Conversation
 
     public $category;
 
+    public $budget;
+
     public function __construct()
     {
         $this->fireflyService = new FireflyService();
@@ -62,6 +64,24 @@ class ExpenseConversation extends Conversation
         $this->ask($question, function(Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 $this->bank = $answer->getValue();
+                $this->askBudget();
+            } else {
+                $this->repeat();
+            }
+        });
+    }
+
+    protected function askBudget()
+    {
+        $buttons = array();
+        $budgets = $this->fireflyService->getBudgets();
+        foreach ($budgets as $budget) {
+            $buttons[] = Button::create($budget['attributes']['name'])->value($budget['id']);
+        }
+        $question = Question::create('На какой бюджет записать расход в ' . $this->amount . ' руб?')->addButtons($buttons);
+        $this->ask($question, function(Answer $answer) {
+            if ($answer->isInteractiveMessageReply()) {
+                $this->budget = $answer->getValue();
                 $this->askCategory();
             } else {
                 $this->repeat();
@@ -88,7 +108,8 @@ class ExpenseConversation extends Conversation
                         'description' => $this->description,
                         'category_id' => $this->category,
                         'source_id' => $this->bank,
-                        'destination_id' => 6
+                        'destination_id' => 6,
+                        'budget_id' => $this->budget
                     ])
                 ));
                 $this->say('Принято! Номер трансакции ' . $result);
