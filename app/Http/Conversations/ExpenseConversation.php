@@ -32,7 +32,18 @@ class ExpenseConversation extends Conversation
     public function run()
     {
         $this->ask('Введи сумму расхода', function (Answer $answer) {
-            $converted = floatval($answer->getText());
+            $text = $answer->getText();
+            $sums = explode('+', $text);
+            if (count($sums) < 2) {
+                $converted = floatval($text);
+            } else {
+                $value = 0;
+                foreach ($sums as $sum) {
+                    $value += floatval($sum);
+                }
+                $converted = floatval($value);
+            }
+
             if ($converted && $converted > 0) {
                 $this->amount = $converted;
 
@@ -64,7 +75,7 @@ class ExpenseConversation extends Conversation
         $this->ask($question, function(Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
                 $this->bank = $answer->getValue();
-                $this->askBudget();
+                $this->askCategory();
             } else {
                 $this->repeat();
             }
@@ -109,7 +120,7 @@ class ExpenseConversation extends Conversation
                         'category_id' => $this->category,
                         'source_id' => $this->bank,
                         'destination_id' => 6,
-                        'budget_id' => $this->budget
+//                        'budget_id' => $this->budget
                     ])
                 ));
                 $this->say('Принято! Номер транзакции ' . $result);
