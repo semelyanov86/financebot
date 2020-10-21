@@ -2,6 +2,7 @@
 
 namespace App\Http\Conversations;
 
+use App\Http\Controllers\BotController;
 use App\Services\FireflyService;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
@@ -69,7 +70,9 @@ class ExpenseConversation extends Conversation
         $buttons = array();
         $banks = $this->fireflyService->getAccounts();
         foreach ($banks as $bank) {
-            $buttons[] = Button::create($bank['attributes']['name'])->value($bank['id']);
+            if (!in_array($bank['id'], BotController::BLACKLIST_ACCOUNTS)) {
+                $buttons[] = Button::create($bank['attributes']['name'])->value($bank['id']);
+            }
         }
         $question = Question::create('С какого счёта вы потратили ' . $this->amount . ' руб?')->addButtons($buttons);
         $this->ask($question, function(Answer $answer) {
