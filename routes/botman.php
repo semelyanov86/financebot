@@ -10,6 +10,12 @@ $botman->hears('/start', function($bot) {
     $bot->reply('Добро пожаловать в бот по управлению финансами. Чтобы отправить расход, напишите Расход. Для получения месячного баланса, пишите Баланс. Для остатков по счетам - Счета.');
 });
 
+$botman->hears('Расход {amount}', function($bot, $amount) {
+    $service = new FireflyService();
+    $amount = $service->convertAmount($amount);
+    $bot->startConversation(new \App\Http\Conversations\ExpenseConversation($amount));
+});
+
 $botman->hears('Расход', function($bot) {
     $bot->startConversation(new \App\Http\Conversations\ExpenseConversation);
 });

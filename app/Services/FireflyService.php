@@ -223,4 +223,19 @@ class FireflyService
             return collect(array());
         }
     }
+
+    public function convertAmount(string $amount) : float
+    {
+        $sums = explode('+', $amount);
+        if (count($sums) < 2) {
+            $converted = floatval($amount);
+        } else {
+            $value = 0;
+            foreach ($sums as $sum) {
+                $value += floatval($sum);
+            }
+            $converted = floatval($value);
+        }
+        return $converted;
+    }
 }

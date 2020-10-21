@@ -24,26 +24,24 @@ class ExpenseConversation extends Conversation
 
     public $budget;
 
-    public function __construct()
+    public function __construct(float $amount = 0.00)
     {
         $this->fireflyService = new FireflyService();
+        if ($amount > 0) {
+            $this->amount = $amount;
+        }
     }
 
 
     public function run()
     {
+        if ($this->amount && $this->amount > 0) {
+            $this->askDescription();
+            return;
+        }
         $this->ask('Введи сумму расхода', function (Answer $answer) {
             $text = $answer->getText();
-            $sums = explode('+', $text);
-            if (count($sums) < 2) {
-                $converted = floatval($text);
-            } else {
-                $value = 0;
-                foreach ($sums as $sum) {
-                    $value += floatval($sum);
-                }
-                $converted = floatval($value);
-            }
+            $converted = $this->fireflyService->convertAmount($text);
 
             if ($converted && $converted > 0) {
                 $this->amount = $converted;
