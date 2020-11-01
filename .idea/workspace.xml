@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="48daafc5-4f53-40d6-94fe-60dc7ba1389f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Conversations/ExpenseConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Conversations/ExpenseConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/FireflyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/FireflyService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/botman.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/botman.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +192,9 @@
       <workItem from="1603046579709" duration="1048000" />
       <workItem from="1603181482771" duration="566000" />
       <workItem from="1603290415764" duration="540000" />
-      <workItem from="1603298124134" duration="463000" />
+      <workItem from="1603298124134" duration="645000" />
+      <workItem from="1603468910176" duration="727000" />
+      <workItem from="1604223216467" duration="79000" />
     </task>
     <task id="LOCAL-00001" summary="Added cot integration to firefly.">
       <created>1602951502000</created>
@@ -294,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603290905877</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added inline expense creator with amount">
+      <created>1603298754452</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1603298754452</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +324,8 @@
     <MESSAGE value="Added statistics for past period" />
     <MESSAGE value="Removed budget, added sum of transactions" />
     <MESSAGE value="Added filter to accounts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added filter to accounts" />
+    <MESSAGE value="Added inline expense creator with amount" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added inline expense creator with amount" />
   </component>
   <component name="WindowStateProjectService">
     <state x="543" y="211" width="824" height="682" key="#CLI_Interpreters" timestamp="1602920773383">
@@ -340,10 +348,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="693" y="311" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603290740849" />
-    <state x="523" y="54" width="864" height="996" key="CommitChangelistDialog2" timestamp="1603290905320">
+    <state x="523" y="54" width="864" height="996" key="CommitChangelistDialog2" timestamp="1603298753819">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="523" y="54" width="864" height="996" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603290905320" />
+    <state x="523" y="54" width="864" height="996" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603298753819" />
     <state x="755" y="294" width="424" height="482" key="FileChooserDialogImpl" timestamp="1602920754133">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -360,10 +368,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="449" y="188" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602920779461" />
-    <state x="555" y="285" width="800" height="534" key="Vcs.Push.Dialog.v2" timestamp="1603290909778">
+    <state x="555" y="285" width="800" height="534" key="Vcs.Push.Dialog.v2" timestamp="1603298758046">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="555" y="285" width="800" height="534" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603290909778" />
+    <state x="555" y="285" width="800" height="534" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603298758046" />
     <state x="613" y="171" width="683" height="763" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603039812019">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

@@ -9,7 +9,7 @@ use BotMan\BotMan\BotMan;
 
 class BotController extends Controller
 {
-    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4);
+    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4, 25, 26, 27, 23, 24, 21, 22);
 
     public function balance(BotMan $bot)
     {
@@ -54,7 +54,7 @@ class BotController extends Controller
         $transactions = $service->getTransactions();
         $msg = '<b>Операции за последний день:</b>';
         $transactions->each(function ($transaction) use ($botMan, &$msg) {
-            $msg .= PHP_EOL . $transaction['description'] . ': ' . number_format(floatval($transaction['amount'])) . $transaction['currency_symbol'] . '. Дата ' . Carbon::parse($transaction['date'])->toDateTimeString();
+            $msg .= PHP_EOL . $transaction['description'] . ': ' . number_format(floatval($transaction['amount'])) . $transaction['currency_symbol'] . '. ' . Carbon::parse($transaction['date'])->diffInDays() . ' дней назад';
         });
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
