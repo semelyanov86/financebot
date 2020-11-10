@@ -15,7 +15,8 @@ class FireflyService
 
     public function __construct()
     {
-        $response = Http::asForm()->post(config('services.firefly.server') . '/oauth/token', [
+        $this->token = config('services.firefly.access_token');
+/*        $response = Http::asForm()->post(config('services.firefly.server') . '/oauth/token', [
             'grant_type' => 'password',
             'client_id' => config('services.firefly.client_id'),
             'client_secret' => config('services.firefly.client_secret'),
@@ -26,7 +27,7 @@ class FireflyService
         if ($response->ok()) {
             $res = $response->json();
             $this->token = $res['access_token'];
-        }
+        }*/
     }
 
     public function getCategories() : array

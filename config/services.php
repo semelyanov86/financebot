@@ -34,7 +34,9 @@ return [
         'client_id' => env('FIREFLY_CLIENT_ID'),
         'client_secret' => env('FIREFLY_CLIENT_SECRET'),
         'user' => env('FIREFLY_USER'),
-        'pass' => env('FIREFLY_PASSWORD')
+        'pass' => env('FIREFLY_PASSWORD'),
+        'access_token' => env('ACCESS_TOKEN'),
+        'refresh_token' => env('REFRESH_TOKEN')
     ],
     'telegram' => [
         'key' => env('TELEGRAM_TOKEN'),

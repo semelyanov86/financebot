@@ -9,7 +9,7 @@ use BotMan\BotMan\BotMan;
 
 class BotController extends Controller
 {
-    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4, 25, 26, 27, 23, 24, 21, 22);
+    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4, 25, 26, 27, 23, 24, 21, 22, 28, 29, 30, 31, 32, 33);
 
     public function balance(BotMan $bot)
     {
