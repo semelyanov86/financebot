@@ -9,7 +9,7 @@ use BotMan\BotMan\BotMan;
 
 class BotController extends Controller
 {
-    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4, 25, 26, 27, 23, 24, 21, 22, 28, 29, 30, 31, 32, 33);
+    const BLACKLIST_ACCOUNTS = array(6, 16, 2, 18, 14, 13, 4, 25, 26, 27, 23, 24, 21, 22, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38);
 
     public function balance(BotMan $bot)
     {
@@ -95,7 +95,12 @@ class BotController extends Controller
         }
         $categories->each(function ($category) use ($botMan, &$msg) {
             if (isset($category->get('spent')[0])) {
-                $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($category->get('spent')[0]['amount'])) . $category->get('spent')[0]['currency_symbol'];
+                if (isset($category->get('spent')[0]['amount'])) {
+                    $amountVal = $category->get('spent')[0]['amount'];
+                } else {
+                    $amountVal = 0;
+                }
+                $msg .= PHP_EOL . $category->get('name') . ': ' . number_format(floatval($amountVal)) . $category->get('spent')[0]['currency_symbol'];
             }
         });
         $botMan->reply($msg, ['parse_mode' => 'HTML']);

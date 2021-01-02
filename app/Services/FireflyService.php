@@ -6,6 +6,7 @@ namespace App\Services;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -16,7 +17,14 @@ class FireflyService
     public function __construct()
     {
         $this->token = config('services.firefly.access_token');
-/*        $response = Http::asForm()->post(config('services.firefly.server') . '/oauth/token', [
+        if ($this->isTokenExpired()) {
+            $this->token = $this->getNewToken();
+        }
+    }
+
+    private function getNewToken() : ?string
+    {
+        $response = Http::asForm()->post(config('services.firefly.server') . '/oauth/token', [
             'grant_type' => 'password',
             'client_id' => config('services.firefly.client_id'),
             'client_secret' => config('services.firefly.client_secret'),
@@ -27,7 +35,23 @@ class FireflyService
         if ($response->ok()) {
             $res = $response->json();
             $this->token = $res['access_token'];
-        }*/
+            Artisan::call('env:set ACCESS_TOKEN=' . $res['access_token']);
+            Artisan::call('env:set REFRESH_TOKEN=' . $res['refresh_token']);
+            Artisan::call('env:set EXPIRED_AT=' . Carbon::now()->addSeconds($res['expires_in'])->format('Y-m-d'));
+            Artisan::call('config:clear');
+            return $res['access_token'];
+        } else {
+            Log::error($response->body());
+            return null;
+        }
+    }
+
+    private function isTokenExpired() : bool
+    {
+        if (!$this->token || Carbon::parse(config('services.firefly.expires_at')) < Carbon::now()) {
+            return true;
+        }
+        return false;
     }
 
     public function getCategories() : array

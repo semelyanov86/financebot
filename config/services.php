@@ -36,7 +36,8 @@ return [
         'user' => env('FIREFLY_USER'),
         'pass' => env('FIREFLY_PASSWORD'),
         'access_token' => env('ACCESS_TOKEN'),
-        'refresh_token' => env('REFRESH_TOKEN')
+        'refresh_token' => env('REFRESH_TOKEN'),
+        'expires_at' => env('EXPIRED_AT')
     ],
     'telegram' => [
         'key' => env('TELEGRAM_TOKEN'),
