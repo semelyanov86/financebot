@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48daafc5-4f53-40d6-94fe-60dc7ba1389f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/DataBuilderService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/FireflyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/FireflyService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +207,9 @@
       <workItem from="1605031000107" duration="632000" />
       <workItem from="1605976089194" duration="119000" />
       <workItem from="1609447262408" duration="276000" />
-      <workItem from="1609565954615" duration="2273000" />
+      <workItem from="1609565954615" duration="2308000" />
+      <workItem from="1609568296589" duration="35000" />
+      <workItem from="1619080876888" duration="4222000" />
     </task>
     <task id="LOCAL-00001" summary="Added cot integration to firefly.">
       <created>1602951502000</created>
@@ -329,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605029812680</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added support for expire token">
+      <created>1609568254180</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1609568254180</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,72 +363,7 @@
     <MESSAGE value="Added inline expense creator with amount" />
     <MESSAGE value="Added blacklist accounts" />
     <MESSAGE value="Fixed double authorization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed double authorization" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="543" y="211" width="824" height="682" key="#CLI_Interpreters" timestamp="1602920773383">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="543" y="211" width="824" height="682" key="#CLI_Interpreters/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602920773383" />
-    <state x="555" y="215" width="800" height="675" key="#Deployment" timestamp="1602953992493">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="555" y="215" width="800" height="675" key="#Deployment/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602953992493" />
-    <state x="534" y="201" width="832" height="702" key="#SSH_Configurations" timestamp="1602953961200">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="534" y="201" width="832" height="702" key="#SSH_Configurations/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602953961200" />
-    <state x="745" y="226" width="419" height="655" key="#com.intellij.ide.util.MemberChooser" timestamp="1604223307412">
-      <screen x="0" y="28" width="1920" height="1052" />
-    </state>
-    <state x="745" y="225" width="419" height="655" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602943067965" />
-    <state x="745" y="226" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052/1920.0.1920.1080@0.28.1920.1052" timestamp="1604223307412" />
-    <state x="693" y="311" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603290740849">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="693" y="311" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603290740849" />
-    <state x="523" y="55" width="864" height="1005" key="CommitChangelistDialog2" timestamp="1605029811763">
-      <screen x="0" y="28" width="1920" height="1052" />
-    </state>
-    <state x="523" y="54" width="864" height="996" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603298753819" />
-    <state x="523" y="55" width="864" height="1005" key="CommitChangelistDialog2/0.28.1920.1052/1920.0.1920.1080@0.28.1920.1052" timestamp="1605029811763" />
-    <state x="755" y="294" width="424" height="482" key="FileChooserDialogImpl" timestamp="1602920754133">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="755" y="294" width="424" height="482" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602920754133" />
-    <state x="759" y="257" width="391" height="591" key="NewPhpClassDialog" timestamp="1602936635081">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="759" y="257" width="391" height="591" key="NewPhpClassDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602936635081" />
-    <state x="755" y="475" width="399" height="155" key="NewPhpFileDialog" timestamp="1602932513885">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="755" y="475" width="399" height="155" key="NewPhpFileDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602932513885" />
-    <state x="449" y="188" key="SettingsEditor" timestamp="1602920779461">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="449" y="188" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602920779461" />
-    <state x="555" y="286" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605029819386">
-      <screen x="0" y="28" width="1920" height="1052" />
-    </state>
-    <state x="555" y="285" width="800" height="534" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603298758046" />
-    <state x="555" y="286" width="800" height="543" key="Vcs.Push.Dialog.v2/0.28.1920.1052/1920.0.1920.1080@0.28.1920.1052" timestamp="1605029819386" />
-    <state x="613" y="171" width="683" height="763" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603039812019">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="613" y="171" width="683" height="763" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603039812019" />
-    <state x="857" y="205" width="195" height="693" key="ftp.server.browser" timestamp="1602953988685">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="857" y="205" width="195" height="693" key="ftp.server.browser/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1602953988685" />
-    <state x="624" y="254" key="run.anything.popup" timestamp="1603298406993">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="624" y="254" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603298406993" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1605029271329">
-      <screen x="0" y="28" width="1920" height="1052" />
-    </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1603020903594" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052/1920.0.1920.1080@0.28.1920.1052" timestamp="1605029271329" />
+    <MESSAGE value="Added support for expire token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added support for expire token" />
   </component>
 </project>

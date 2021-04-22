@@ -18,3 +18,5 @@ Route::get('/', 'HomeController@index');
 Route::any('/botman', function (){
     app('botman')->listen();
 });
+
+Route::post('/subscribe', 'BotController@subscribe');

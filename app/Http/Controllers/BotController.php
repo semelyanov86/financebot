@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubscriptionRequest;
+use App\Services\DataBuilderService;
 use App\Services\FireflyService;
+use BotMan\BotMan\BotManFactory;
+use BotMan\Drivers\Telegram\TelegramDriver;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use BotMan\BotMan\BotMan;
+use Illuminate\Validation\ValidationException;
 
 class BotController extends Controller
 {
@@ -104,5 +109,23 @@ class BotController extends Controller
             }
         });
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $builderService = new DataBuilderService();
+        $data = $request->all();
+        if (!isset($data['mautic.form_on_submit'])) {
+            throw new \DomainException('No data!');
+        }
+        if (isset($data['mautic.form_on_submit']['submission'])) {
+            $submissionData = $data['mautic.form_on_submit']['submission'];
+        } elseif (isset($data['mautic.form_on_submit'][0]['submission'])) {
+            $submissionData = $data['mautic.form_on_submit'][0]['submission'];
+        } else {
+            throw new \DomainException('No data!');
+        }
+        $msg = $builderService->generateMessage($submissionData);
+        $builderService->sendMessage($msg);
     }
 }
