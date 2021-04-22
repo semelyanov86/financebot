@@ -7,10 +7,10 @@ use BotMan\Drivers\Telegram\TelegramDriver;
 
 class DataBuilderService
 {
-    public function generateMessage(array $submissionData): string
+    public function generateMessage(array $submissionData, string $website = 'itvolga'): string
     {
         $mauticData = $submissionData['results'];
-        $msg = '<b>Новый подписчик на сайт itvolga!</b>';
+        $msg = '<b>Новый подписчик на сайт ' . $website . '!</b>';
         if (isset($data['mautic.form_on_submit']['timestamp'])) {
             $msg .= PHP_EOL . 'Date' . ': ' . $data['mautic.form_on_submit']['timestamp'];
         } elseif (isset($data['mautic.form_on_submit'][0]['timestamp'])) {
@@ -50,6 +50,13 @@ class DataBuilderService
         $users = config('services.telegram.allowed');
         foreach ($users as $user) {
             $botMan->say($message, $user, TelegramDriver::class, ['parse_mode' => 'HTML']);
+        }
+    }
+
+    public function validateData(array $data): void
+    {
+        if (!isset($data['mautic.form_on_submit'])) {
+            throw new \DomainException('No data!');
         }
     }
 }

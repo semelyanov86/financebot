@@ -19,4 +19,5 @@ Route::any('/botman', function (){
     app('botman')->listen();
 });
 
+Route::post('/subscribe/sergeyem', 'BotController@subscribeSergey');
 Route::post('/subscribe', 'BotController@subscribe');

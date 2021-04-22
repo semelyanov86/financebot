@@ -111,13 +111,10 @@ class BotController extends Controller
         $botMan->reply($msg, ['parse_mode' => 'HTML']);
     }
 
-    public function subscribe(Request $request)
+    public function subscribe(Request $request, DataBuilderService $builderService)
     {
-        $builderService = new DataBuilderService();
         $data = $request->all();
-        if (!isset($data['mautic.form_on_submit'])) {
-            throw new \DomainException('No data!');
-        }
+        $builderService->validateData($data);
         if (isset($data['mautic.form_on_submit']['submission'])) {
             $submissionData = $data['mautic.form_on_submit']['submission'];
         } elseif (isset($data['mautic.form_on_submit'][0]['submission'])) {
@@ -126,6 +123,21 @@ class BotController extends Controller
             throw new \DomainException('No data!');
         }
         $msg = $builderService->generateMessage($submissionData);
+        $builderService->sendMessage($msg);
+    }
+
+    public function subscribeSergey(Request $request, DataBuilderService $builderService)
+    {
+        $data = $request->all();
+        $builderService->validateData($data);
+        if (isset($data['mautic.form_on_submit']['submission'])) {
+            $submissionData = $data['mautic.form_on_submit']['submission'];
+        } elseif (isset($data['mautic.form_on_submit'][0]['submission'])) {
+            $submissionData = $data['mautic.form_on_submit'][0]['submission'];
+        } else {
+            throw new \DomainException('No data!');
+        }
+        $msg = $builderService->generateMessage($submissionData, 'sergeyem');
         $builderService->sendMessage($msg);
     }
 }

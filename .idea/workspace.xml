@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48daafc5-4f53-40d6-94fe-60dc7ba1389f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/DataBuilderService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/DataBuilderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DataBuilderService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +209,9 @@
       <workItem from="1609447262408" duration="276000" />
       <workItem from="1609565954615" duration="2308000" />
       <workItem from="1609568296589" duration="35000" />
-      <workItem from="1619080876888" duration="4222000" />
+      <workItem from="1619080876888" duration="4530000" />
+      <workItem from="1619093040234" duration="852000" />
+      <workItem from="1619094867470" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="Added cot integration to firefly.">
       <created>1602951502000</created>
@@ -337,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609568254180</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added subscription route">
+      <created>1619085402171</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1619085402171</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +373,7 @@
     <MESSAGE value="Added blacklist accounts" />
     <MESSAGE value="Fixed double authorization" />
     <MESSAGE value="Added support for expire token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added support for expire token" />
+    <MESSAGE value="Added subscription route" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added subscription route" />
   </component>
 </project>
