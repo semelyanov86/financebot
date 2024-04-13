@@ -41,6 +41,9 @@ class DataBuilderService
         if (isset($mauticData['referer'])) {
             $msg .= PHP_EOL . 'Referer' . ': ' . $mauticData['referer'];
         }
+        if (!isset($mauticData['referer']) && !isset($mauticData['phone'])) {
+            throw new \DomainException('Not all data provided for chatbot', 422);
+        }
         return $msg;
     }
 

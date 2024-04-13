@@ -17,9 +17,6 @@ class FireflyService
     public function __construct()
     {
         $this->token = config('services.firefly.access_token');
-        if ($this->isTokenExpired()) {
-            $this->token = $this->getNewToken();
-        }
     }
 
     private function getNewToken() : ?string
@@ -192,23 +189,21 @@ class FireflyService
     public function getCategoriesStat($start = false, $end = false) : Collection
     {
         if (!$start) {
-            $start = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
+            $start = Carbon::now()->firstOfMonth()->format('Y-m-d');
         }
         if (!$end) {
-            $end = Carbon::now()->format('Y-m-d H:i:s');
+            $end = Carbon::now()->format('Y-m-d');
         }
         if ($this->token) {
             $response = Http::withHeaders([
                 'Accept' => 'application/json'
-            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/categories', [
+            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/insight/expense/category', [
                 'start' => $start,
                 'end' => $end
             ]);
             if ($response->ok()) {
                 $res = $response->json();
-                return collect($res['data'])->map(function($row) {
-                    return collect($row);
-                })->pluck('attributes')->map(function($row) {
+                return collect($res)->map(function($row) {
                     return collect($row);
                 });
             } else {
@@ -222,23 +217,21 @@ class FireflyService
     public function getBudgetsStat($start = false, $end = false) : Collection
     {
         if (!$start) {
-            $start = Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s');
+            $start = Carbon::now()->firstOfMonth()->format('Y-m-d');
         }
         if (!$end) {
-            $end = Carbon::now()->format('Y-m-d H:i:s');
+            $end = Carbon::now()->format('Y-m-d');
         }
         if ($this->token) {
             $response = Http::withHeaders([
                 'Accept' => 'application/json'
-            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/budgets', [
+            ])->withToken($this->token)->get(config('services.firefly.server') . '/api/v1/insight/expense/budget', [
                 'start' => $start,
                 'end' => $end
             ]);
             if ($response->ok()) {
                 $res = $response->json();
-                return collect($res['data'])->map(function($row) {
-                    return collect($row);
-                })->pluck('attributes')->map(function($row) {
+                return collect($res)->map(function($row) {
                     return collect($row);
                 });
             } else {

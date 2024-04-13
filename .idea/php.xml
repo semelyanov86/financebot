@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
@@ -121,12 +131,13 @@
       <path value="$PROJECT_DIR$/vendor/clue/stdio-react" />
       <path value="$PROJECT_DIR$/vendor/clue/term-react" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="87c29f87-aad1-448e-88a1-869882ac689d" name="Remote PHP 7.4" home="vagrant://DATA" debugger_id="php.debugger.XDebug">
-        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/vagrant/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" VAGRANT_FOLDER="$PROJECT_DIR$/../../Homestead" />
+      <interpreter id="87c29f87-aad1-448e-88a1-869882ac689d" name="Remote PHP 7.4" home="vagrant://DATA" auto="false" debugger_id="php.debugger.XDebug">
+        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/vagrant/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" VAGRANT_FOLDER="$PROJECT_DIR$/../../Homestead" />
       </interpreter>
     </interpreters>
   </component>
@@ -219,9 +230,15 @@
     </phpInfoCache>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
     </phpunit_settings>
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
 </project>

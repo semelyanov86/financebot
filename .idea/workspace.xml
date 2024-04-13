@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48daafc5-4f53-40d6-94fe-60dc7ba1389f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BotController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/DataBuilderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/DataBuilderService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/FireflyService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/FireflyService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,21 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "semelyanov86"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:semelyanov86/financebot.git",
+    "accountId": "294e81fe-3279-4111-9b89-0f32b5cc2361"
+  }
+}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="Remote PHP 7.4">
     <include_path>
@@ -144,29 +160,35 @@
       <path value="$PROJECT_DIR$/vendor/clue/stdio-react" />
       <path value="$PROJECT_DIR$/vendor/clue/term-react" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="1izqLe6aUNy9Y8pkG3Mo7sPuGHR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Conversations" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.update-module-directories": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "git-widget-placeholder": "master",
+    "js.ns.project": "true",
+    "js.ns.project.flavor": "JavaScript",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Conversations" />
@@ -211,7 +233,17 @@
       <workItem from="1609568296589" duration="35000" />
       <workItem from="1619080876888" duration="4530000" />
       <workItem from="1619093040234" duration="852000" />
-      <workItem from="1619094867470" duration="115000" />
+      <workItem from="1619094867470" duration="255000" />
+      <workItem from="1622270170531" duration="205000" />
+      <workItem from="1622270577206" duration="236000" />
+      <workItem from="1622271142108" duration="101000" />
+      <workItem from="1622357667437" duration="161000" />
+      <workItem from="1622543799868" duration="788000" />
+      <workItem from="1622722935641" duration="91000" />
+      <workItem from="1658855613507" duration="2383000" />
+      <workItem from="1658858073535" duration="4000" />
+      <workItem from="1658858292333" duration="839000" />
+      <workItem from="1713024337853" duration="4487000" />
     </task>
     <task id="LOCAL-00001" summary="Added cot integration to firefly.">
       <created>1602951502000</created>
@@ -346,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619085402171</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added subscription for sergeyem website">
+      <created>1619095111122</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1619095111122</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,6 +413,7 @@
     <MESSAGE value="Fixed double authorization" />
     <MESSAGE value="Added support for expire token" />
     <MESSAGE value="Added subscription route" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added subscription route" />
+    <MESSAGE value="Added subscription for sergeyem website" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added subscription for sergeyem website" />
   </component>
 </project>
